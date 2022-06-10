@@ -1,0 +1,79 @@
+/* @theme minimal-lund */
+
+
+@import 'gaia';
+@import url('https://unpkg.com/tailwindcss@^2/dist/utilities.min.css');
+
+:root {
+  background: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --highlight-yellow: #fff076;
+  --lund-blue: #22458a;
+  --lund-bronze: #875e29;
+  --lund-flower: #fcdee0;
+  --lund-sky: #bad8e1;
+  --lund-copper: #b4d7b8;
+  --lund-plaster: #e2ddcb;
+  --lund-stone: #beb7b3;
+  --lund-dark: #4d4c44;
+
+  --lund-flower-50: #fdeeef;
+  --lund-sky-50: #dcebf0;
+  --lund-copper-50: #d9ebdb;
+  --lund-plaster-50: #f0eee5;
+  --lund-stone-50: #dedbd9;
+  --lund-dark-50: #a6a5a1;
+
+  --lund-flower-25: #fef8f9;
+  --lund-sky-25: #f1f7f9;
+  --lund-copper-25: #f0f7f1;
+  --lund-plaster-25: #f9f8f5;
+  --lund-stone-25: #f2f1f0;
+  --lund-dark-25: #dbdbda;
+}
+
+div.definition {
+  padding: 2rem;
+  border: 5px solid var(--lund-copper);
+  border-radius: 30px;
+  background-color: var(--lund-copper-25);
+}
+
+div.center {
+  margin: auto;
+  height: 50%;
+  padding: 10px;
+}
+
+h1 {
+  color: black;
+}
+
+mark {
+  color: inherit;
+  background-color: var(--highlight-yellow);
+}
+
+mark.half {
+  color: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, var(--highlight-yellow) 50%);
+}
+
+cite {
+  color: gray;
+}
+
+cite.slide {
+  position: absolute;
+  text-align: right;
+  bottom: 30px;
+  right: 100px;
+}
+
+_columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+/* https://github.com/orgs/marp-team/discussions/192 */
