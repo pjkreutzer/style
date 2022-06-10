@@ -56,7 +56,7 @@ mark {
 
 mark.half {
   color: inherit;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, var(--highlight-yellow) 50%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, var(--highlight-yellow) 40%);
 }
 
 cite {
