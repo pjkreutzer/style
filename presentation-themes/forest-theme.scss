@@ -1,0 +1,43 @@
+/*-- scss:defaults --*/
+$theme-darkgreen: #051f20;
+$theme-phtahlogreen: #0b2b26;
+$theme-mediumjunglegreen:  #163832;
+$theme-brunswickgreen:  #235347;
+$theme-darkseagreen:  #8eb69b;
+$theme-chinesewhite:  #daf1de;
+
+$link-color: $theme-darkseagreen;
+$presentation-heading-color: $theme-darkgreen;
+$highlight-color: $theme-darkseagreen;
+$presentation-title-slide-text-align: "left";
+
+/*-- scss:rules --*/
+mark {
+    color: inherit;
+    background-color: $highlight-color;
+  }
+  
+mark.half {
+    color: inherit;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, lighten($highlight-color, 15%), 40%);
+  }
+
+.slide-cite {
+  font-size: smaller;
+    position: absolute;
+    display: block;
+    text-align: right;
+    bottom: 30px;
+    right: 100px;
+  }
+
+th {
+  background-color: white;
+  position: sticky;
+  top: 0;
+}
+
+.inverted {
+  background-color: $theme-darkgreen;
+  color: white;
+}
