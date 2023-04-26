@@ -16,11 +16,23 @@ $ocean-green: hsl(152, 37%, 46%);
 $tussock: hsl(36, 54%, 51%);
 $pomegranate: hsl(4, 90%, 58%);
 
+$gray-100: hsl(210, 17%, 98%) !default;
+$gray-200: hsl(210, 16%, 93%) !default;
+$gray-300: hsl(0, 0%, 87%) !default;
+$gray-400: hsl(210, 14%, 83%) !default;
+$gray-500: hsl(210, 11%, 71%) !default;
+$gray-600: hsl(210, 7%, 56%) !default;
+$gray-700: hsl(210, 9%, 31%) !default;
+$gray-800: hsl(210, 10%, 23%) !default;
+$gray-900: hsl(210, 11%, 15%) !default;
+$black:    hsl(0, 0%, 0%) !default;
+
 
 $primary      : $havelock-blue;
 $light-accent : $persian-blue;
 $dark-accent  : $gulf-blue;
 $dark-shade   : $vulcan;
+$default      : $gray-600;
 $info         : $dark-accent;
 $success      : $ocean-green;
 $warning      : $tussock;
@@ -42,11 +54,11 @@ p {
   line-height: calc(150% + (0.0025vw * (100 - 30))); /* calculate line height */
 }
 
-
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-family-sans-serif;
   font-weight: 400;
   color: inherit, $dark-shade;
+  border-bottom: none;
 }
 
 a {
@@ -81,9 +93,16 @@ a {
 
 // sidebar TOC
 
-#TOC {
- color: $default;
+.margin-sidebar,
+.toc-active .header-section-number{
+ color: $gray-400;
 }
+
+
+.sidebar-menu-container a, .sidebar-item-container .chapter-number {
+  color: $gray-400;
+}
+
 
 // responsive iframe
 .container {
@@ -98,4 +117,48 @@ a {
   left: 0;
   width: 100%;
   height: 500px;
+}
+
+.quarto-title-meta-heading {
+  color: $default;
+}
+
+// revealjs
+
+.reveal h1, 
+.reveal h2, 
+.reveal h3, 
+.reveal h4, 
+.reveal h5, 
+.reveal h6 {
+  font-family: $font-family-sans-serif;
+  font-weight: 800;
+  text-transform: lowercase;
+  color: inherit, $dark-shade;
+}
+
+.slide-cite {
+  color: $default;
+  font-size: 1rem;
+  position: absolute;
+  display: block;
+  margin-top: 5px;
+  text-align: right;
+  bottom: 0;
+  right: 0;
+  }
+
+.reveal img{
+  border-radius: 10px;
+  // round corner of image
+
+}
+// extras
+
+.empty {
+  color: inherit;
+  -webkit-text-stroke: 2px;
+  text-stroke: 2px;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
 }
