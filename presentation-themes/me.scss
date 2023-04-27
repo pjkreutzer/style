@@ -2,20 +2,16 @@
 
 // fonts
 
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Gothic+A1:wght@200;400;800;900&family=IBM+Plex+Mono:wght@100;200;300;400;700&family=Inconsolata:wght@200;400;900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700');
 
 $font-family-sans-serif: "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace    : "Ubunto Mono", monospace !default;
 
-$white: hsla(0, 0%, 100%, 1);
-$persian-blue: hsla(227, 100%, 21%, 1);
-$havelock-blue: hsla(227, 72%, 55%, 1);
-$gulf-blue: hsla(227, 89%, 22%, 1);
-$vulcan: hsla(240, 100%, 3%, 1);
-$ocean-green: hsl(152, 37%, 46%);
-$tussock: hsl(36, 54%, 51%);
-$pomegranate: hsl(4, 90%, 58%);
+$font-weight-bold: 800;
+$font-weight-normal: 400;
 
+
+$white: hsla(0, 0%, 100%, 1);
 $gray-100: hsl(210, 17%, 98%) !default;
 $gray-200: hsl(210, 16%, 93%) !default;
 $gray-300: hsl(0, 0%, 87%) !default;
@@ -27,37 +23,92 @@ $gray-800: hsl(210, 10%, 23%) !default;
 $gray-900: hsl(210, 11%, 15%) !default;
 $black:    hsl(0, 0%, 0%) !default;
 
+$theme-colors: (
+    "white":      hsl(0, 0%, 100%),
+    "light":      hsl(219, 49%, 91%),
+    "default":    hsl(210, 11%, 71%),
+    "dark":       hsl(227, 100%, 3%),
+    "primary":    hsl(227, 71%, 55%),
+    "secondary":  hsl(225, 95%, 63%),
+    "info":       hsl(221, 96%, 70%),
+    "accent1":    hsl(227, 89%, 22%),
+    "accent2":    hsl(226, 61%, 48%),
+    "accent3":    hsl(218, 78%, 77%),
+    "success":    hsl(152, 37%, 46%),
+    "warning":    hsl(36, 54%, 51%),
+    "danger":     hsl(4, 90%, 58%),
+    );
+    
+$color-names:  map-keys($theme-colors);
+    
+$light: map-get($theme-colors, "light");
+$dark: map-get($theme-colors, "dark");
+$primary: map-get($theme-colors, "primary");
+$secondary: map-get($theme-colors, "secondary");
+$info: map-get($theme-colors, "info");
+$accent1: map-get($theme-colors, "accent1");
+$accent2: map-get($theme-colors, "accent2");
+$accent3: map-get($theme-colors, "accent3");
+$success: map-get($theme-colors, "success");
+$warning: map-get($theme-colors, "warning");
+$danger: map-get($theme-colors, "danger");
 
-$primary      : $havelock-blue;
-$light-accent : $persian-blue;
-$dark-accent  : $gulf-blue;
-$dark-shade   : $vulcan;
-$default      : $gray-600;
-$info         : $dark-accent;
-$success      : $ocean-green;
-$warning      : $tussock;
-$danger       : $pomegranate;
+$light-accent : $accent3;
+$medium-accent: $accent2;
+$dark-accent  : $accent1;
+$default: $gray-500;
 
-$link-color   : $havelock-blue !default;
+$dark-background: $dark-accent;
+$light-background: $light;
+$white-background: $white;
+
+$link-color   : $primary !default;
+
+
+// breakpoints
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
 
 /*-- scss:rules --*/
+
+
+// colors
+
+@each $color-name in $color-names {
+  .text-#{$color-name} {
+    color: map-get($theme-colors, $color-name);
+  }
+
+  .bg-#{$color-name} {
+    background-color: map-get($theme-colors, $color-name);
+  }
+}
 
 // acceptable rem values with 1 rem = 16 px
 // 0.25, 0.5, 0.75, 1, 1.5, 2, 4, 6, 8, 12, 16, 24, 32, 40, 48
 
- body, p {
+body {
   font-family: $font-family-sans-serif;
-  color: $dark-shade;
+  color: $dark;
 }
 
 p {
+  font-family: inherit;
   line-height: calc(150% + (0.0025vw * (100 - 30))); /* calculate line height */
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-family-sans-serif;
   font-weight: 400;
-  color: inherit, $dark-shade;
+  color: inherit, $dark;
   border-bottom: none;
 }
 
@@ -72,6 +123,17 @@ a {
   color: $default;
 }
 
+.font-normal {
+  font-weight: $font-weight-normal;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
 
 // callouts
 
@@ -100,7 +162,7 @@ a {
 }
 
 
-@include media-breakpoint-up(lg) {
+@media (min-width: 992px) {
   .sidebar-menu-container a, .sidebar-item-container .chapter-number {
     color: $gray-400;
   }
@@ -132,35 +194,132 @@ a {
 }
 
 // revealjs
+.reveal {
+  & .title-box {
+    position: absolute;
+    right: 480px;
+    top: 200px;
+    height: 550px;
+    width: 1500px;
+    background-color: $light-accent;
+    padding: 20px;
+    padding-left: 50px;
+    box-shadow: -15px 15px 0px 0px $dark-accent;
+    border-radius: 5px;
+  } // boxes of Tom Mock Quarto presenation
 
-.reveal h1, 
-.reveal h2, 
-.reveal h3, 
-.reveal h4, 
-.reveal h5, 
-.reveal h6 {
-  font-family: $font-family-sans-serif;
-  font-weight: 800;
-  text-transform: lowercase;
-  color: inherit, $dark-shade;
-}
-
-.slide-cite {
-  color: $default;
-  font-size: 1rem;
-  position: absolute;
-  display: block;
-  margin-top: 5px;
-  text-align: right;
-  bottom: 0;
-  right: 0;
+  & .title-subtitle{
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: $medium-accent;
+  }
+  
+  & .quarto-title-authors{
+    display: flex;
+    justify-content: flex-start;
+    color: $dark-accent;
   }
 
-.reveal img{
-  border-radius: 10px;
-  // round corner of image
+  & .quarto-title-block .date{
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: right;
+  }
 
+  // & .title-institution{
+  //   font-size: 1.5rem;
+  //   font-weight: 400;
+  //   color: $dark;
+  // }
+
+  // & .title-place{
+  //   font-size: 1.5rem;
+  //   font-weight: 400;
+  //   color: $dark;
+  // }
+
+  & .title-social{
+    font-family: $font-family-monospace;
+    color: $light-accent;
+  }
+
+  & .inverted, & .level1 {
+    color: $light;
+    background-color: $dark;
+
+    & h1{
+      text-transform: lowercase;
+    }
+  }
+
+  & .has-dark-background {
+    color: $white;
+    background-color: $dark-background;
+
+    & h1, & h2, & h3, & h4 {
+      color: $light;
+    }
+  }
+
+  & h1, & h2, & h3, & h4, & h5, & h6 {
+    font-family: $font-family-sans-serif;
+    font-weight: $font-weight-bold;
+    text-transform: lowercase;
+    color: $dark-accent;
+    
+    &.title {
+        text-transform: uppercase;
+        font-size: 8rem;
+        font-weight: $font-weight-bold;
+        color: $primary;
+    }
+  }
+  
+  & .right {
+    text-align: right;
+  }
+
+  & .text-emphasis {
+    font-weight: $font-weight-bold;
+    color: $primary;
+  }
+
+  & .slide-menu-button a{
+   color: $light;
+  }
+
+  & .progress span {
+    background-color: $accent3;
+  }
+
+  & .slide-cite {
+    color: $default;
+    font-size: 1rem;
+    position: absolute;
+    display: block;
+    margin-top: 5px;
+    text-align: right;
+    bottom: 0;
+    right: 0;
+  }
+
+  & img {
+    border-radius: 10px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  & table th,
+  & table td {
+ text-align:left;
+ padding:.2em .5em .2em .5em;
+ border-bottom:1px solid;
+ border-color: $light;
+  }
 }
+
+
 // extras
 
 .empty {
