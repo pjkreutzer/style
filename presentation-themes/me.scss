@@ -91,18 +91,26 @@ a {
   border-left-color: $success;
 }
 
-// sidebar TOC
-
-.margin-sidebar,
-.toc-active .header-section-number{
- color: $gray-400;
-}
+// sidebars
 
 
-.sidebar-menu-container a, .sidebar-item-container .chapter-number {
+  .margin-sidebar,
+  .toc-active .header-section-number {
   color: $gray-400;
 }
 
+
+@include media-breakpoint-up(lg) {
+  .sidebar-menu-container a, .sidebar-item-container .chapter-number {
+    color: $gray-400;
+  }
+}
+
+// buttons
+
+.btn {
+  border-radius: 5px;
+}
 
 // responsive iframe
 .container {
